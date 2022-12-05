@@ -25,4 +25,11 @@ Steps
 3. Next, I verified that Apache2 is running as a service in the OS. with command: sudo systemctl status apache2
 
 4. The green light indicates Apache2 is running.
+   <img width="919" alt="git-5" src="https://user-images.githubusercontent.com/99102616/205601135-23fc6b5a-3121-4d09-b7c0-afe97974d612.png">
 
+5. Open port 80 on the Ubuntu instance inbound security group to allow access from the internet.
+
+6. Access the Apache2 service locally in our Ubuntu shell by running: curl http://localhost:80 or curl http://127.0.0.1:80 This command would output the Apache2 payload indicating that it is accessible locally in the Ubuntu shell.
+
+7. Next, test that Apache HTTP server can respond to requests from the Internet. Open a browser and type the public IP of the Ubuntu instance: http://52.87.235.179:80 This outputs the Apache2 default page.
+   <img width="1223" alt="apache" src="https://user-images.githubusercontent.com/99102616/205745984-38ec7730-64e8-4e5a-8080-9c375f3c02db.png">
