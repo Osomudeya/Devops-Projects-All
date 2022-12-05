@@ -50,3 +50,60 @@ In this step, I installed a Database Management System (DBMS)  for storing and m
 
 6. Next, test that login to MySQL console works. Run: sudo mysql -p
    <img width="757" alt="Screen Shot 2022-12-05 at 10 47 00 PM" src="https://user-images.githubusercontent.com/99102616/205749328-9888e02a-8060-4651-98d8-1798dc500950.png">
+7. Type exit and enter to exit console.
+
+## STEP 3 — INSTALLING PHP
+
+**Steps**
+1. To install these 3 packages at once, run: sudo apt install php libapache2-mod-php php-mysql -y
+
+2. After installation is done, run the following command to confirm your PHP version: php -v
+
+<img width="561" alt="Screen Shot 2022-12-05 at 11 02 29 PM" src="https://user-images.githubusercontent.com/99102616/205751956-2b6053fd-5415-4f86-8ba0-dbcc20911df2.png">
+
+3. At this point, your LAMP stack is completely installed and fully operational.
+
+## STEP 4 — CREATING A VIRTUAL HOST FOR YOUR WEBSITE USING APACHE
+
+**Steps**
+1. Setting up a domain called project lamp. Create the directory for project lamp using ‘mkdir’. Run: sudo mkdir /var/www/projectlamp
+2. Assign ownership of the directory with your current system user, run: sudo chown -R $USER:$USER /var/www/projectlamp
+3. Next, create and open a new configuration file in Apache’s sites-available directory. Type: sudo vi /etc/apache2/sites-available/projectlamp.conf
+4. This will create a new blank file. Paste in the following bare-bones configuration by hitting on i on the keyboard to enter the insert mode, and paste the text: <VirtualHost *:80> ServerName projectlamp ServerAlias www.projectlamp ServerAdmin webmaster@localhost DocumentRoot /var/www/projectlamp ErrorLog ${APACHE_LOG_DIR}/error.log CustomLog ${APACHE_LOG_DIR}/access.log combined
+   <img width="567" alt="Screen Shot 2022-12-05 at 11 15 10 PM" src="https://user-images.githubusercontent.com/99102616/205754490-52f8341b-945a-488b-8ffa-46a927e0b935.png">
+5. To save and close the file. Hit the esc button on the keyboard, Type :, Type wq. w for write and q for quit and Hit ENTER to save the file. 
+6. use the ls command to show the new file in the sites-available directory: sudo ls /etc/apache2/sites-available
+7. Next, use a2ensite command to enable the new virtual host: sudo a2ensite projectlamp
+
+8. Disable the default website that comes installed with Apache. type: sudo a2dissite 000-default
+
+9. Ensure your configuration file doesn’t contain syntax errors, run: sudo apache2ctl configtest
+
+10. Finally, reload Apache so these changes take effect: sudo systemctl reload apache2
+
+11. The website is active, but the web root /var/www/projectlamp is still empty. 
+12. Create an index.html file in that location so that we can test that the virtual host works as expected:sudo echo 'Hello LAMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectlamp/index.html
+
+13. Reload the public IP to see changes to the apache2 default page.
+
+<img width="1258" alt="Screen Shot 2022-12-05 at 11 34 37 PM" src="https://user-images.githubusercontent.com/99102616/205757513-2a5141c9-e0cb-4301-8358-d82faed6daee.png">
+
+## STEP 5 — ENABLE PHP ON THE WEBSITE
+
+**Steps**
+
+1. With the default Directory Index settings on Apache, a file named index.html will always take precedence over an index.php file. To make index.php file tak precedence need to edit the /etc/apache2/mods-enabled/dir.conf file and change the order in which the index.php file is listed within the DirectoryIndex directive.
+
+2. Run: sudo vim /etc/apache2/mods-enabled/dir.conf then: #Change this: #DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm #To this: DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+
+3. Save and close file.
+
+4. Next, reload Apache so the changes take effect, type: sudo systemctl reload apache2
+
+5. Finally, we will create a PHP script to test that PHP is correctly installed and configured on your server. Create a new file named index.php inside the custom web root folder, run: vim /var/www/projectlamp/index.php
+
+6. This will open a blank file. Add the PHP code: <?php phpinfo();
+
+7. Save and close the file, then refresh the page to see changes.
+   <img width="1256" alt="Screen Shot 2022-12-05 at 11 44 00 PM" src="https://user-images.githubusercontent.com/99102616/205758974-cd3ba78a-66a3-4784-b36d-036e83a9ede9.png">
+
