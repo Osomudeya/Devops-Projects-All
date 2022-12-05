@@ -13,6 +13,7 @@ steps
 4. Next I SSH into the instance using Mac Terminal 
 5. In the Terminal, I typed cd Downloads to navigate to the location of my key-pair. 
 6. Inside the Downloads directory, I connected to my instance using the Public DNS. "ssh -i <keypair-name> ubuntu@<pubicDNS>"
+   <img width="917" alt="git-4" src="https://user-images.githubusercontent.com/99102616/205599871-ac62cdb2-1e96-4e8d-92a3-d24a0b722bac.png">
 
 ### INSTALLING APACHE AND UPDATING THE FIREWALL
 
