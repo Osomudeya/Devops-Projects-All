@@ -7,9 +7,9 @@ steps
 1. Logged in to my AWS account as IAM user
 2. I selected Ubuntu free tier instance
 3. I had the required configurations such as ((Enabling public IP, setting up security group, and key pair) and, finally launched the instance.)
-![](/Users/mac/Desktop/git repo build/git-1)
-![](/Users/mac/Desktop/git repo build/git-2)
-![](/Users/mac/Desktop/git repo build/git-3)
+<img src="/Users/mac/Desktop/git repo build/git-1"/>
+<img src="/Users/mac/Desktop/git repo build/git-2"/>
+<img src="/Users/mac/Desktop/git repo build/git-3"/>
 
 4. Next I SSH into the instance using Mac Terminal 
 5. In the Terminal, I typed cd Downloads to navigate to the location of my key-pair. 
