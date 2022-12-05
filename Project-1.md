@@ -33,3 +33,20 @@ Steps
 
 7. Next, test that Apache HTTP server can respond to requests from the Internet. Open a browser and type the public IP of the Ubuntu instance: http://52.87.235.179:80 This outputs the Apache2 default page.
    <img width="1223" alt="apache" src="https://user-images.githubusercontent.com/99102616/205745984-38ec7730-64e8-4e5a-8080-9c375f3c02db.png">
+
+## INSTALLING MYSQL
+
+**Steps**
+In this step, I installed a Database Management System (DBMS)  for storing and managing data on the site in a relational database.
+
+1. Run ‘apt’ to acquire and install this software, run: sudo apt install mysql-server
+
+2. Confirm installation by typing Y when prompted.
+
+3. Once installation is complete, log in to the MySQL console by running: sudo mysql
+4. Next, run a security script that comes pre-installed with MySQL, to remove insecure default settings and lock down access to your database system. run: ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'PassWord.1'; then exit MySQL shell by typing exit and enter.
+
+5. Run interactive script by typing: sudo mysql_secure_installation and following the instructions.
+
+6. Next, test that login to MySQL console works. Run: sudo mysql -p
+   <img width="757" alt="Screen Shot 2022-12-05 at 10 47 00 PM" src="https://user-images.githubusercontent.com/99102616/205749328-9888e02a-8060-4651-98d8-1798dc500950.png">
