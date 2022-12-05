@@ -17,3 +17,4 @@ Steps
 
 7. To test that the server can be accessed locally from the instance run the curl command: curl http://localhost:80 The output shows that the server is accessible from the local host.
 8. To test that the server can be accessed from the internet, open a browser and type the following url with the public IP of your Ubuntu instance; http://Public-IP-Address:80
+   <img width="1247" alt="Screen Shot 2022-12-06 at 12 37 51 AM" src="https://user-images.githubusercontent.com/99102616/205768491-f7a4a5be-b1f3-4ac7-ba1f-00dbfd459c4e.png">
