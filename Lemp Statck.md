@@ -236,5 +236,13 @@ That means your PHP environment is ready to connect and interact with your MySQL
 ![todolist](https://user-images.githubusercontent.com/99102616/205860745-52e9dce9-fe0f-45f7-89d3-2a196c33701a.png)
 
 **Issues Faced**
-While everything seemed to on go smoothly during the project, I however encountered an issue when I got to the final step where I had to access the database from the internet through the browser. I got an error saying: Error!: SQLSTATE[HY000] [1045] Access denied for user 'example_user'@'localhost' (using password: YES) After several attempts at troubleshooting the issue, I reliased that I had not changed the password value in the PHP script to the new password that I created when I created the example_user.
+1. While everything seemed to on go smoothly during the project, I however encountered an issue when I got to the final step where I had to access the database from the internet through the browser. I got an error saying: Error!: SQLSTATE[HY000] [1045] Access denied for user 'example_user'@'localhost' (using password: YES) After several attempts at troubleshooting the issue, I reliased that I had not changed the password value in the PHP script to the new password that I created when I created the example_user.
+2. Also ran into error trying to set up mysql password as I was getting an error message "Your password does not satisfy the current policy requirements"
+I had it fixed by setting mysql variables to - You can set it to LOW by issuing below mysql command:
+
+```
+mysql> SET GLOBAL validate_password.length = 4;
+mysql> SET GLOBAL validate_password.policy=LOW;
+
+```
 
