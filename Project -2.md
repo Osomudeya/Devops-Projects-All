@@ -224,6 +224,7 @@ You should see a page like this, showing the content you’ve inserted in your t
 https://drive.google.com/uc?export=view&id=1qrYScyXP91v-s0hgrcBmw5WAv0eAIzEb
 
 That means your PHP environment is ready to connect and interact with your MySQL server.
+
 ![todolist](https://user-images.githubusercontent.com/99102616/205860745-52e9dce9-fe0f-45f7-89d3-2a196c33701a.png)
 
 Issues Faced
