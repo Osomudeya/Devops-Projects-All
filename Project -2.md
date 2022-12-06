@@ -224,7 +224,8 @@ You should see a page like this, showing the content you’ve inserted in your t
 https://drive.google.com/uc?export=view&id=1qrYScyXP91v-s0hgrcBmw5WAv0eAIzEb
 
 That means your PHP environment is ready to connect and interact with your MySQL server.
+![todolist](https://user-images.githubusercontent.com/99102616/205860745-52e9dce9-fe0f-45f7-89d3-2a196c33701a.png)
 
-Congratulations!
-In this guide, we have built a flexible foundation for serving PHP websites and applications to your visitors,
-using Nginx as web server and MySQL as database management system.
+Issues Faced
+While everything seemed to on go smoothly during the project, I however encountered an issue when I got to the final step where I had to access the database from the internet through the browser. I got an error saying: Error!: SQLSTATE[HY000] [1045] Access denied for user 'example_user'@'localhost' (using password: YES) After several attempts at troubleshooting the issue, I reliased that I had not changed the password value in the PHP script to the new password that I created when I created the example_user.
+
