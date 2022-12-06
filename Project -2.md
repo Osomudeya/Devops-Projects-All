@@ -77,4 +77,19 @@
 10. Next, reload Nginx to apply the changes: sudo systemctl reload nginx
 11. The website is now active, but the web root /var/www/projectLEMP is still empty. Create an index.html file in that location so that we can test that the new server block works as expected: sudo echo 'Hello LEMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectLEMP/index.html
 12. Open a browser and try to open the website URL using IP address: http://Public-IP-Address:80
+    <img width="1251" alt="Screen Shot 2022-12-06 at 1 18 35 AM" src="https://user-images.githubusercontent.com/99102616/205775035-dbcf90aa-bb56-48d9-ba70-94634852ed4d.png">
 
+## STEP 5 – TESTING PHP WITH NGINX
+
+**Steps**
+1. Now that LAMP stack is completely installed and fully operational. We test it to validate that Nginx can correctly hand .php files off to your PHP processor.
+2. Open a new file called info.php within your document root in your text editor: sudo nano /var/www/projectLEMP/info.php
+3. Type the following lines into the new file.
+
+```
+<?php
+phpinfo();
+```
+
+4. You can now access this page in your web browser by visiting the domain name or public IP address you’ve set up in your Nginx configuration file, followed by /info.php: http://server_domain_or_IP/info.php
+5. Remove the created file, as it contains sensitive information about your PHP environment and your Ubuntu server: sudo rm /var/www/your_domain/info.php
