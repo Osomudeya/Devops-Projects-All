@@ -48,7 +48,7 @@
 3. Next, assign ownership of the directory with the $USER environment variable, which will reference your current system user: sudo chown -R $USER:$USER /var/www/projectLEMP
 4. Then, open a new configuration file in Nginx’s sites-available directory using your preferred command-line editor. Here, we’ll use vi: sudo vi /etc/nginx/sites-available/projectLEMP
 5. This will create a new blank file. Paste in the following bare-bones configuration:
-</>
+```
    server {
    listen 80;
    server_name projectLEMP www.projectLEMP;
@@ -69,7 +69,7 @@
    deny all;
    }
    }
-</>
+```
 6. In the nano editor, enter CTRL+X to exit and Y to confirm.
 7. Activate the configuration by linking to the config file from Nginx’s sites-enabled directory, run: sudo ln -s /etc/nginx/sites-available/projectLEMP /etc/nginx/sites-enabled/
 8. Test your configuration for syntax errors by typing: sudo nginx -t
