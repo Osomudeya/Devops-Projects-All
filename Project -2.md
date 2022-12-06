@@ -38,8 +38,7 @@
 
 1. PHP has to be installed to process code and generate dynamic content for the web server.
 2. Nginx requires an external program to handle PHP processing and act as a bridge between the PHP interpreter itself and the web server. This allows for a better overall performance in most PHP-based websites, but it requires additional configuration. You’ll need to install php-fpm, which stands for “PHP fastCGI process manager”, and tell Nginx to pass PHP requests to this software for processing. Additionally, you’ll need php-mysql, a PHP module that allows PHP to communicate with MySQL-based databases. Core PHP packages will automatically be installed as dependencies.
-3. To install the 2 pacakages at once, run: sudo apt install php-fpm php-mysql
-4. Type Y to confirm installation and enter.
+3. To install the 2 packages at once, run: sudo apt install php-fpm php-mysql -y
 
 ## STEP 4 — CONFIGURING NGINX TO USE PHP PROCESSOR
 
@@ -47,8 +46,30 @@
 1. Now that we have PHP components installed. Next, I will configure Nginx to use them.
 2. Create the root web directory for your_domain as follows:sudo mkdir /var/www/projectLEMP
 3. Next, assign ownership of the directory with the $USER environment variable, which will reference your current system user: sudo chown -R $USER:$USER /var/www/projectLEMP
-4. Then, open a new configuration file in Nginx’s sites-available directory using your preferred command-line editor. Here, we’ll use nano: sudo nano /etc/nginx/sites-available/projectLEMP
+4. Then, open a new configuration file in Nginx’s sites-available directory using your preferred command-line editor. Here, we’ll use vi: sudo vi /etc/nginx/sites-available/projectLEMP
 5. This will create a new blank file. Paste in the following bare-bones configuration:
+
+   server {
+   listen 80;
+   server_name projectLEMP www.projectLEMP;
+   root /var/www/projectLEMP;
+
+   index index.html index.htm index.php;
+
+   location / {
+   try_files $uri $uri/ =404;
+   }
+
+   location ~ \.php$ {
+   include snippets/fastcgi-php.conf;
+   fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+   }
+
+   location ~ /\.ht {
+   deny all;
+   }
+   }
+
 6. In the nano editor, enter CTRL+X to exit and Y to confirm.
 7. Activate the configuration by linking to the config file from Nginx’s sites-enabled directory, run: sudo ln -s /etc/nginx/sites-available/projectLEMP /etc/nginx/sites-enabled/
 8. Test your configuration for syntax errors by typing: sudo nginx -t
